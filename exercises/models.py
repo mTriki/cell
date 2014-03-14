@@ -33,6 +33,7 @@ class Exercise(models.Model):
 	equipment = models.ManyToManyField('equipments.Equipment', null = True, blank = True, verbose_name = 'Equipement nécessaire')
 	difficult_level = models.PositiveIntegerField(null = True, blank = True, verbose_name = u'Niveau de difficulté')
 	media_file = models.FileField(upload_to = 'upload/exercises/exercises/', null = True, blank = True, verbose_name = u'Démo')
+	picture = models.ImageField(upload_to = 'upload/exercises/exercises/', null = True, blank = True, verbose_name = u'Image')
 	body_parts = models.ManyToManyField(BodyPart, null = True, blank = True, verbose_name = u'Parties du corps travaillées')
 	advice = models.TextField(null = True, blank = True, verbose_name = "Conseil d'utilisation");
 
