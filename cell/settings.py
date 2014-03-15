@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '7c2q+dxh#j_+&j7k#_=$s-bbgc_nwwy-rt7@6*s3=g#h8uf4_h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -58,16 +58,28 @@ WSGI_APPLICATION = 'cell.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'cell_db',
-        'USER': 'cell',
-        'PASSWORD': '8Molia(',
-        'HOST': 'mysql.alwaysdata.com',
-        'PORT': '3306',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': 'cell_db',
+            'USER': 'root',
+            'PASSWORD': 'root',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': 'cell_db',
+            'USER': 'cell',
+            'PASSWORD': '8Molia(',
+            'HOST': 'mysql1.alwaysdata.com',
+            'PORT': '3306',
+        }
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -87,9 +99,9 @@ APPEND_SLASH = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/home/cell/cell/public/static/'
+STATIC_ROOT = '/public/static/' if DEBUG else '/home/cell/cell/public/static/'
 STATIC_URL = '/static/' if DEBUG else 'http://cell.alwaysdata.net/static/'
 
 # User-uploaded content
-MEDIA_ROOT = '/home/cell/cell/public/upload/'
+MEDIA_ROOT = '/public/upload/' if DEBUG else '/home/cell/cell/public/upload/'
 MEDIA_URL = '/upload/'
