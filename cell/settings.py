@@ -1,5 +1,5 @@
 """
-Django settings for oxygen project.
+Django settings for cell project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -17,14 +17,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9(_tor@h!tgabdms51@-w&o-dc*sm*8wp2=fdj_nc=%7gw9cr#'
+SECRET_KEY = '7c2q+dxh#j_+&j7k#_=$s-bbgc_nwwy-rt7@6*s3=g#h8uf4_h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -54,6 +54,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'cell.urls'
 
 WSGI_APPLICATION = 'cell.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

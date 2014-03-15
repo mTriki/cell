@@ -9,4 +9,4 @@ _PROJECT_NAME = _PROJECT_DIR.split('/')[-1]
 os.environ['DJANGO_SETTINGS_MODULE'] = "%s.settings" % _PROJECT_NAME  
  
 from django.core.servers.fastcgi import runfastcgi  
-runfastcgi(method="threaded", daemonize="false")
+runfastcgi(method="threaded", daemonize="false") 
