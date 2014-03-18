@@ -22,14 +22,14 @@ SECRET_KEY = '7c2q+dxh#j_+&j7k#_=$s-bbgc_nwwy-rt7@6*s3=g#h8uf4_h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
 INSTALLED_APPS = (
+	'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -105,3 +105,13 @@ STATIC_URL = '/static/' if DEBUG else 'http://cell.alwaysdata.net/static/'
 # User-uploaded content
 MEDIA_ROOT = '/public/upload/' if DEBUG else '/home/cell/cell/public/upload/'
 MEDIA_URL = '/upload/'
+
+TEMPLATE_DIRS = (
+    'templates',
+)
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)

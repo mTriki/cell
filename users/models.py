@@ -12,8 +12,7 @@ class Sex(models.Model):
 		verbose_name = u'Sexe'
 		verbose_name_plural = 'Sexes'
 
-class Person(models.Model):
-	user = models.OneToOneField(User)
+class Person(User):
 	address = models.CharField(max_length = 255, verbose_name = 'Adresse')
 	zip_code = models.PositiveIntegerField(verbose_name = 'Code postal')
 	locality = models.CharField(max_length = 255, verbose_name = 'Ville')
@@ -24,9 +23,10 @@ class Person(models.Model):
 	phone = models.CharField(max_length = 255, verbose_name = 'Téléphone')
 	badge = models.PositiveIntegerField(verbose_name = 'Numéro de badge')
 	picture = models.ImageField(upload_to = 'upload/users/person/', null = True, blank = True, verbose_name = 'Image')
+	training_programms = models.ManyToManyField('trainings.Programm', null = True, blank = True, verbose_name = u"Programmes d'entraînement")
 
 	def __unicode__(self):
-		return self.user.username
+		return self.username
 
 	class Meta:
 		verbose_name = u'Personne'
@@ -40,7 +40,6 @@ class Employee(Person):
 
 class Customer(Person):
 	job = models.CharField(max_length = 255, verbose_name = 'Profession')
-	training_programms = models.ManyToManyField('trainings.Programm', null = True, blank = True, verbose_name = u"Programmes d'entraînement")
 
 	class Meta:
 		verbose_name = u'Client'
