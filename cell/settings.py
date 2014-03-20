@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -29,17 +28,16 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-	'suit',
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'staff_admin',
     'equipments',
     'exercises',
     'trainings',
-    'users'
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,22 +94,18 @@ USE_TZ = True
 
 APPEND_SLASH = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = '/public/static/' if DEBUG else '/home/cell/cell/public/static/'
+STATIC_ROOT = 'public/static/' if DEBUG else '/home/cell/cell/public/static/'
 STATIC_URL = '/static/' if DEBUG else 'http://cell.alwaysdata.net/static/'
+STATICFILES_DIRS = (
+    'static/',
+)
 
 # User-uploaded content
-MEDIA_ROOT = '/public/upload/' if DEBUG else '/home/cell/cell/public/upload/'
+MEDIA_ROOT = 'public/upload/' if DEBUG else '/home/cell/cell/public/upload/'
 MEDIA_URL = '/upload/'
 
 TEMPLATE_DIRS = (
     'templates',
-)
-
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
 )

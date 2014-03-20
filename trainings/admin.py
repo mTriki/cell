@@ -1,17 +1,15 @@
+from django.shortcuts import get_object_or_404
 from django.contrib import admin
+from users.models import Person
 from trainings.models import Series, TrainingDay, Programm
-from trainings.forms import ProgrammForm
 
 class ProgrammAdmin(admin.ModelAdmin):
-	form = ProgrammForm
+	def save_model(self, request, obj, form, change):
+		if not obj.number and request.GET and request.GET['_popup']:
+			obj.number = get_object_or_404(Person, user_ptr_id = request.GET['_popup']).training_programms_set.count()
+			obj.is_model = True
 
-	def change_view(self, request, object_id, form_url = '', extra_context = None):
-		if request.method == 'POST':
-			data = request.POST
-			data['number'] = 0
-			return super(ProgrammAdmin, self).change_view(data, object_id, form_url, extra_context=extra_context)
-		else:
-			return super(ProgrammAdmin, self).change_view(request, object_id, form_url, extra_context=extra_context)
+		obj.save()
 
 admin.site.register(Series)
 admin.site.register(TrainingDay)

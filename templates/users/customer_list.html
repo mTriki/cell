@@ -1,0 +1,15 @@
+{% extends 'staff_admin_layout.html' %}
+
+{% block page_title %} - Liste des clients{% endblock %}
+
+{% block content %}
+	{% for article in object_list %}
+	    <div class="article">
+	       <h3>{{ article.name }}</h3>
+	    </div>
+	{% empty %}
+		Aucun client, pas de boool
+	{% endfor %}
+
+	{% include 'pagination.html' %}
+{% endblock %}

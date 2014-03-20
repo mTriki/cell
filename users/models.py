@@ -16,7 +16,7 @@ class Person(User):
 	address = models.CharField(max_length = 255, verbose_name = 'Adresse')
 	zip_code = models.PositiveIntegerField(verbose_name = 'Code postal')
 	locality = models.CharField(max_length = 255, verbose_name = 'Ville')
-	birth_day = models.DateField(verbose_name = 'Date de naissance')
+	birthday = models.DateField(verbose_name = 'Date de naissance')
 	nationality = models.CharField(max_length = 255, verbose_name = 'Nationalité')
 	residence_permit = models.CharField(null = True, blank = True, max_length = 255, verbose_name = 'Permis de séjour')
 	sex = models.ForeignKey('Sex', null = True, blank = True, verbose_name = 'Sexe')

@@ -25,7 +25,7 @@ class TrainingDay(models.Model):
 
 class Programm(models.Model):
 	number = models.PositiveIntegerField(editable = False, verbose_name = u"Numéro de l'entraînement")
-	is_model = models.BooleanField(editable = False, default = False, verbose_name = u'Définir en tant que modèle')
+	is_model = models.BooleanField(editable = False, default = True, verbose_name = u'Définir en tant que modèle')
 	name = models.CharField(max_length = 255, null = True, blank = True, verbose_name = 'Nom')
 	period = models.PositiveIntegerField(null = True, blank = True, verbose_name = u"Nombre de mois")
 
